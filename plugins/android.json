@@ -20,6 +20,7 @@
       "PACKAGE_NAME": "io.codova.hellocordova"
     },
     "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "io.codova.hellocordova"
     }
   },

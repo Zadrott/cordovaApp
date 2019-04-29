@@ -300,7 +300,7 @@ module.exports.metadata =
     "cordova-plugin-media-capture": "3.0.2",
     "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-camera": "4.0.3"
+    "cordova-plugin-camera": "4.1.0-dev"
 }
 // BOTTOM OF METADATA
 });

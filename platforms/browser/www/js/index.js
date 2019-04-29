@@ -16,31 +16,98 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+function setLocalStorage() {
+  localStorage.setItem("Name", "John");
+  localStorage.setItem("Job", "Developer");
+  localStorage.setItem("Project", "Cordova Project");
+}
+
+function showLocalStorage() {
+  console.log(localStorage.getItem("Name"));
+  console.log(localStorage.getItem("Job"));
+  console.log(localStorage.getItem("Project"));
+}
+
+function removeProjectFromLocalStorage() {
+  localStorage.removeItem("Name");
+  localStorage.removeItem("Job");
+  localStorage.removeItem("Project");
+}
+
+// function getLocalStorageByKey() {
+//   // localStorage.removeItem("Name");
+//   // localStorage.removeItem("Job");
+//   // localStorage.removeItem("Project");
+// }
+
+function cameraTakePicture() {
+  navigator.camera.getPicture(onSuccess, onFail, {
+    quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+  });
+}
+
+function onSuccess(imageData) {
+  var image = document.getElementById("myImage");
+  image.src = "data:image/jpeg;base64," + imageData;
+}
+function onFail(message) {
+  alert("Failed because: " + message);
+}
+function cameraGetPicture() {
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    supporttype: IMAGE
+    });
+}
+
 var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
+  // Application Constructor
+  initialize: function() {
+    document.addEventListener(
+      "deviceready",
+      this.onDeviceReady.bind(this),
+      false
+    );
+    document
+      .getElementById("setLocalStorage")
+      .addEventListener("click", setLocalStorage);
+    document
+      .getElementById("showLocalStorage")
+      .addEventListener("click", showLocalStorage);
+    document
+      .getElementById("removeProjectFromLocalStorage")
+      .addEventListener("click", removeProjectFromLocalStorage);
+    // document
+    //   .getElementById("getLocalStorageByKey")
+    //   .addEventListener("click", getLocalStorageByKey);
+    document
+      .getElementById("cameraTakePicture")
+      .addEventListener("click", cameraTakePicture);
+    var localStorage = window.localStorage;
+  },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
+  // deviceready Event Handler
+  //
+  // Bind any cordova events here. Common events are:
+  // 'pause', 'resume', etc.
+  onDeviceReady: function() {
+    this.receivedEvent("deviceready");
+  },
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+  // Update DOM on a Received Event
+  receivedEvent: function(id) {
+    var parentElement = document.getElementById(id);
+    var listeningElement = parentElement.querySelector(".listening");
+    var receivedElement = parentElement.querySelector(".received");
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+    listeningElement.setAttribute("style", "display:none;");
+    receivedElement.setAttribute("style", "display:block;");
 
-        console.log('Received Event: ' + id);
-    }
+    console.log("Received Event: " + id);
+  },
 };
 
 app.initialize();
